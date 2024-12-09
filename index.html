@@ -7,16 +7,17 @@
   <link rel="stylesheet" href="sass/main.css">
 </head>
 <body>
-  <div class="page">
-    <header class="header">
-      <h1 class="header__title">Camera App</h1>
-    </header>
-
-    <section class="camera">
-      <video class="camera__video" autoplay playsinline></video>
-      <button class="camera__button">Capture</button>
-    </section>
-  </div>
+    <div class="page">
+        <h1 class="page__title">Вебкамера</h1>
+        <video id="video" class="video" autoplay playsinline></video>
+        <div class="camera-controls">
+            <label for="camera-select" class="camera-controls__label">Вибір камери:</label>
+            <select id="camera-select" class="camera-controls__select">
+                <option value="default">Основна камера</option>
+                <option value="front">Фронтальна камера</option>
+            </select>
+        </div>
+    </div>
   <script src="scriptJS/camera.js"></script>
 </body>
 </html>

@@ -1,39 +1,39 @@
-.camera {
+.page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-  
-    &__video {
-      width: 80%;
-      max-width: 600px;
-      border: 2px solid #333;
-      border-radius: 10px;
-    }
-  
-    &__button {
-      background-color: $primary-color;
-      color: #fff;
-      padding: $button-padding;
-      border: none;
-      border-radius: $border-radius;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-  
-      &:hover {
-        background-color: $hover-color;
-      }
-    }
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
 
-    .camera__video {
-        width: 80%;
-        max-width: 600px;
-        border: 2px solid #333;
-        border-radius: 10px;
-        
-        /* Зеркальне відображення */
-        transform: scaleX(-1);
-      }
-      
-  }
-  
+.page__title {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.video {
+    width: 70%;
+    max-width: 700px;
+    border: 5px solid #333;
+    border-radius: 10px;
+}
+
+.camera-controls {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.camera-controls__label {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.camera-controls__select {
+    font-size: 16px;
+    padding: 5px;
+    cursor: pointer;
+}

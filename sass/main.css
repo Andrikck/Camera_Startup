@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .page {
   display: flex;
   justify-content: center;
@@ -35,35 +34,42 @@
   color: #004a99;
 }
 
-.camera {
+.page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
-.camera__video {
-  width: 80%;
-  max-width: 600px;
-  border: 2px solid #333;
+
+.page__title {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.video {
+  width: 70%;
+  max-width: 700px;
+  border: 5px solid #333;
   border-radius: 10px;
 }
-.camera__button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+
+.camera-controls {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.camera-controls__label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.camera-controls__select {
+  font-size: 16px;
+  padding: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.camera__button:hover {
-  background-color: #0056b3;
-}
-.camera .camera__video {
-  width: 80%;
-  max-width: 600px;
-  border: 2px solid #333;
-  border-radius: 10px;
-  /* Зеркальне відображення */
-  transform: scaleX(-1);
 }/*# sourceMappingURL=main.css.map */
