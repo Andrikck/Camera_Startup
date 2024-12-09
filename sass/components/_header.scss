@@ -1,12 +1,8 @@
-.header {
-    background-color: $primary-color;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
-  
-    &__title {
-      margin: 0;
-      font-size: 24px;
-    }
+header {
+  text-align: center;
+  margin-top: 20px;
+  h1 {
+    font-size: 2rem;
+    color: #333;
   }
-  
+}

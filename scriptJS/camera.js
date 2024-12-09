@@ -1,41 +1,57 @@
 const video = document.getElementById('video');
-const cameraSelect = document.getElementById('camera-select');
+        const toggleCameraButton = document.getElementById('toggleCamera');
+        let currentStream;
+        let currentDeviceId = null;
 
-// Функція для отримання доступу до відео-пристроїв
-async function getCameras() {
-    const devices = await navigator.mediaDevices.enumerateDevices();
-    const videoDevices = devices.filter(device => device.kind === 'videoinput');
-    
-    // Оновлюємо список камер у селекті
-    cameraSelect.innerHTML = '';
-    videoDevices.forEach((device, index) => {
-        const option = document.createElement('option');
-        option.value = device.deviceId;
-        option.textContent = device.label || `Камера ${index + 1}`;
-        cameraSelect.appendChild(option);
-    });
-}
+        // Функція для запуску відео з камери
+        const startCamera = (deviceId = null) => {
+            const constraints = {
+                video: {
+                    facingMode: deviceId ? undefined : 'user', // Якщо deviceId передано, то вибираємо конкретну камеру
+                    deviceId: deviceId ? { exact: deviceId } : undefined
+                }
+            };
 
-// Функція для підключення до вибраної камери
-async function startCamera(deviceId) {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-            video: { deviceId: deviceId }
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(stream => {
+                    if (currentStream) {
+                        currentStream.getTracks().forEach(track => track.stop()); // Зупиняємо попереднє відео
+                    }
+                    currentStream = stream;
+                    video.srcObject = stream;
+                })
+                .catch(error => {
+                    console.error('Помилка доступу до камери:', error);
+                });
+        };
+
+        // Отримуємо доступні камери
+        const getCameras = () => {
+            navigator.mediaDevices.enumerateDevices()
+                .then(devices => {
+                    const cameras = devices.filter(device => device.kind === 'videoinput');
+                    if (cameras.length > 1) {
+                        toggleCameraButton.style.display = 'block'; // Показуємо кнопку для перемикання камери
+                    }
+                })
+                .catch(error => console.error('Помилка при отриманні списку камер:', error));
+        };
+
+        // Обробка перемикання камери
+        toggleCameraButton.addEventListener('click', () => {
+            navigator.mediaDevices.enumerateDevices()
+                .then(devices => {
+                    const cameras = devices.filter(device => device.kind === 'videoinput');
+                    if (cameras.length > 1) {
+                        // Перемикаємо камеру
+                        const nextDeviceId = currentDeviceId === cameras[0].deviceId ? cameras[1].deviceId : cameras[0].deviceId;
+                        currentDeviceId = nextDeviceId;
+                        startCamera(currentDeviceId);
+                    }
+                })
+                .catch(error => console.error('Помилка при перемиканні камери:', error));
         });
-        video.srcObject = stream;
-    } catch (error) {
-        console.error('Помилка доступу до камери:', error);
-    }
-}
 
-// Спочатку отримуємо доступ до камер
-getCameras();
-
-// Перемикання між камерами при виборі у списку
-cameraSelect.addEventListener('change', (event) => {
-    const deviceId = event.target.value;
-    startCamera(deviceId);
-});
-
-// Спочатку підключаємо основну камеру (по замовчуванню)
-startCamera(cameraSelect.value);
+        // Спочатку запускаємо першу камеру
+        startCamera();
+        getCameras();

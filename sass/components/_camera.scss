@@ -1,39 +1,26 @@
-.page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
+.camera {
+  @include center-flex;
+  flex-direction: column;
+  .video-container {
+    position: relative;
+    .video {
+      @include video-style;
+      transform: scaleX(-1); // Для зеркального відображення
+    }
+  }
 
-.page__title {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.video {
-    width: 70%;
-    max-width: 700px;
-    border: 5px solid #333;
-    border-radius: 10px;
-}
-
-.camera-controls {
+  .controls {
     margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.camera-controls__label {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.camera-controls__select {
-    font-size: 16px;
-    padding: 5px;
-    cursor: pointer;
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
 }

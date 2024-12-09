@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Camera App</title>
-  <link rel="stylesheet" href="sass/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>camera app</title>
+    <link rel="stylesheet" href="sass/main.css">
 </head>
 <body>
-    <div class="page">
-        <h1 class="page__title">Вебкамера</h1>
-        <video id="video" class="video" autoplay playsinline></video>
-        <div class="camera-controls">
-            <label for="camera-select" class="camera-controls__label">Вибір камери:</label>
-            <select id="camera-select" class="camera-controls__select">
-                <option value="default">Основна камера</option>
-                <option value="front">Фронтальна камера</option>
-            </select>
+    <header>
+        <h1>Camera</h1>
+    </header>
+
+    <div class="camera">
+        <div class="video-container">
+            <video id="video" class="video" autoplay playsinline></video>
+        </div>
+
+        <div class="controls">
+            <button id="toggleCamera">Змінити камеру</button>
         </div>
     </div>
   <script src="scriptJS/camera.js"></script>
