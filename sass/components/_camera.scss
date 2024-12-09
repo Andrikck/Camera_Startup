@@ -1,3 +1,4 @@
+// components/_camera.scss
 .camera {
   @include center-flex;
   flex-direction: column;
@@ -5,7 +6,9 @@
     position: relative;
     .video {
       @include video-style;
-      transform: scaleX(-1); // Для зеркального відображення
+      width: 100%; // Оновлене для гнучкості
+      max-width: 100%;
+      height: auto;
     }
   }
 
