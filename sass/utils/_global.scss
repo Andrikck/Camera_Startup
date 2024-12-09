@@ -1,0 +1,8 @@
+.page {
+  @include center-flex;
+  height: 100vh;
+  background-color: $background-color;
+  font-family: $font-family;
+  margin: 0;
+  padding: 0;
+}

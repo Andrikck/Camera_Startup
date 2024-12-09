@@ -1,0 +1,16 @@
+.hero {
+    background-color: lighten($primary-color, 30%);
+    padding: 50px 20px;
+    text-align: center;
+  
+    &__title {
+      font-size: 32px;
+      color: $hover-color;
+    }
+  
+    &__subtitle {
+      font-size: 18px;
+      color: darken($primary-color, 20%);
+    }
+  }
+  
